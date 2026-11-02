@@ -6,7 +6,10 @@ import NewsletterForm from "./NewsletterForm";
 
 const FALLBACK_CATEGORY_IMAGE = "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=85";
 
-export default function Home({ products, categories }) {
+const DEFAULT_HERO = "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1500&q=90";
+const DEFAULT_FEATURE = "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1400&q=90";
+
+export default function Home({ products, categories, settings = {} }) {
   return (
     <main>
       <section className="hero">
@@ -22,7 +25,7 @@ export default function Home({ products, categories }) {
         </div>
         <div className="hero-visual">
           <div className="hero-image-wrap">
-            <Image src="https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1500&q=90" alt="A curated collection of modern technology devices" fill priority sizes="(max-width: 800px) 100vw, 55vw" className="hero-image" />
+            <Image src={settings.hero_image || DEFAULT_HERO} alt="A curated collection of modern technology devices" fill priority sizes="(max-width: 800px) 100vw, 55vw" className="hero-image" />
             <div className="image-caption"><span>THE EVERYDAY EDIT</span><span>01 / 04</span></div>
           </div>
           <div className="floating-label"><Zap size={15} /><span>Small upgrades.<br /><strong>Big difference.</strong></span></div>
@@ -65,7 +68,7 @@ export default function Home({ products, categories }) {
       </section>
 
       <section className="feature-banner">
-        <div className="feature-image"><Image src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1400&q=90" alt="Minimal laptop and workspace" fill sizes="50vw" /></div>
+        <div className="feature-image"><Image src={settings.feature_image || DEFAULT_FEATURE} alt="Minimal laptop and workspace" fill sizes="50vw" /></div>
         <div className="feature-copy">
           <div className="eyebrow"><span className="eyebrow-line" /> YOUR SPACE, UPGRADED</div>
           <h2>Better setups<br />start with <em>small things.</em></h2>
